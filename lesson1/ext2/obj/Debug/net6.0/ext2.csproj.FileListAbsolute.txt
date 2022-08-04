@@ -1,0 +1,15 @@
+C:\Python\Diagram_n_code\c_sharp_practice\lesson1\ext2\bin\Debug\net6.0\ext2.exe
+C:\Python\Diagram_n_code\c_sharp_practice\lesson1\ext2\bin\Debug\net6.0\ext2.deps.json
+C:\Python\Diagram_n_code\c_sharp_practice\lesson1\ext2\bin\Debug\net6.0\ext2.runtimeconfig.json
+C:\Python\Diagram_n_code\c_sharp_practice\lesson1\ext2\bin\Debug\net6.0\ext2.dll
+C:\Python\Diagram_n_code\c_sharp_practice\lesson1\ext2\bin\Debug\net6.0\ext2.pdb
+C:\Python\Diagram_n_code\c_sharp_practice\lesson1\ext2\obj\Debug\net6.0\ext2.csproj.AssemblyReference.cache
+C:\Python\Diagram_n_code\c_sharp_practice\lesson1\ext2\obj\Debug\net6.0\ext2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Python\Diagram_n_code\c_sharp_practice\lesson1\ext2\obj\Debug\net6.0\ext2.AssemblyInfoInputs.cache
+C:\Python\Diagram_n_code\c_sharp_practice\lesson1\ext2\obj\Debug\net6.0\ext2.AssemblyInfo.cs
+C:\Python\Diagram_n_code\c_sharp_practice\lesson1\ext2\obj\Debug\net6.0\ext2.csproj.CoreCompileInputs.cache
+C:\Python\Diagram_n_code\c_sharp_practice\lesson1\ext2\obj\Debug\net6.0\ext2.dll
+C:\Python\Diagram_n_code\c_sharp_practice\lesson1\ext2\obj\Debug\net6.0\refint\ext2.dll
+C:\Python\Diagram_n_code\c_sharp_practice\lesson1\ext2\obj\Debug\net6.0\ext2.pdb
+C:\Python\Diagram_n_code\c_sharp_practice\lesson1\ext2\obj\Debug\net6.0\ext2.genruntimeconfig.cache
+C:\Python\Diagram_n_code\c_sharp_practice\lesson1\ext2\obj\Debug\net6.0\ref\ext2.dll
