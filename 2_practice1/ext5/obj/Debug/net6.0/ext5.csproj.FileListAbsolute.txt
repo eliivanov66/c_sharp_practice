@@ -1,0 +1,15 @@
+C:\Python\Diagram_n_code\c_sharp_practice\2_practice1\ext5\obj\Debug\net6.0\ext5.csproj.AssemblyReference.cache
+C:\Python\Diagram_n_code\c_sharp_practice\2_practice1\ext5\obj\Debug\net6.0\ext5.GeneratedMSBuildEditorConfig.editorconfig
+C:\Python\Diagram_n_code\c_sharp_practice\2_practice1\ext5\obj\Debug\net6.0\ext5.AssemblyInfoInputs.cache
+C:\Python\Diagram_n_code\c_sharp_practice\2_practice1\ext5\obj\Debug\net6.0\ext5.AssemblyInfo.cs
+C:\Python\Diagram_n_code\c_sharp_practice\2_practice1\ext5\obj\Debug\net6.0\ext5.csproj.CoreCompileInputs.cache
+C:\Python\Diagram_n_code\c_sharp_practice\2_practice1\ext5\bin\Debug\net6.0\ext5.exe
+C:\Python\Diagram_n_code\c_sharp_practice\2_practice1\ext5\bin\Debug\net6.0\ext5.deps.json
+C:\Python\Diagram_n_code\c_sharp_practice\2_practice1\ext5\bin\Debug\net6.0\ext5.runtimeconfig.json
+C:\Python\Diagram_n_code\c_sharp_practice\2_practice1\ext5\bin\Debug\net6.0\ext5.dll
+C:\Python\Diagram_n_code\c_sharp_practice\2_practice1\ext5\bin\Debug\net6.0\ext5.pdb
+C:\Python\Diagram_n_code\c_sharp_practice\2_practice1\ext5\obj\Debug\net6.0\ext5.dll
+C:\Python\Diagram_n_code\c_sharp_practice\2_practice1\ext5\obj\Debug\net6.0\refint\ext5.dll
+C:\Python\Diagram_n_code\c_sharp_practice\2_practice1\ext5\obj\Debug\net6.0\ext5.pdb
+C:\Python\Diagram_n_code\c_sharp_practice\2_practice1\ext5\obj\Debug\net6.0\ext5.genruntimeconfig.cache
+C:\Python\Diagram_n_code\c_sharp_practice\2_practice1\ext5\obj\Debug\net6.0\ref\ext5.dll
