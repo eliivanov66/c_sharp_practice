@@ -1,0 +1,15 @@
+C:\Python\Diagram_n_code\c_sharp_practice\dog_n_friend\bin\Debug\net6.0\dog_n_friend.exe
+C:\Python\Diagram_n_code\c_sharp_practice\dog_n_friend\bin\Debug\net6.0\dog_n_friend.deps.json
+C:\Python\Diagram_n_code\c_sharp_practice\dog_n_friend\bin\Debug\net6.0\dog_n_friend.runtimeconfig.json
+C:\Python\Diagram_n_code\c_sharp_practice\dog_n_friend\bin\Debug\net6.0\dog_n_friend.dll
+C:\Python\Diagram_n_code\c_sharp_practice\dog_n_friend\bin\Debug\net6.0\dog_n_friend.pdb
+C:\Python\Diagram_n_code\c_sharp_practice\dog_n_friend\obj\Debug\net6.0\dog_n_friend.csproj.AssemblyReference.cache
+C:\Python\Diagram_n_code\c_sharp_practice\dog_n_friend\obj\Debug\net6.0\dog_n_friend.GeneratedMSBuildEditorConfig.editorconfig
+C:\Python\Diagram_n_code\c_sharp_practice\dog_n_friend\obj\Debug\net6.0\dog_n_friend.AssemblyInfoInputs.cache
+C:\Python\Diagram_n_code\c_sharp_practice\dog_n_friend\obj\Debug\net6.0\dog_n_friend.AssemblyInfo.cs
+C:\Python\Diagram_n_code\c_sharp_practice\dog_n_friend\obj\Debug\net6.0\dog_n_friend.csproj.CoreCompileInputs.cache
+C:\Python\Diagram_n_code\c_sharp_practice\dog_n_friend\obj\Debug\net6.0\dog_n_friend.dll
+C:\Python\Diagram_n_code\c_sharp_practice\dog_n_friend\obj\Debug\net6.0\refint\dog_n_friend.dll
+C:\Python\Diagram_n_code\c_sharp_practice\dog_n_friend\obj\Debug\net6.0\dog_n_friend.pdb
+C:\Python\Diagram_n_code\c_sharp_practice\dog_n_friend\obj\Debug\net6.0\dog_n_friend.genruntimeconfig.cache
+C:\Python\Diagram_n_code\c_sharp_practice\dog_n_friend\obj\Debug\net6.0\ref\dog_n_friend.dll
