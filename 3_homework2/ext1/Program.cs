@@ -57,7 +57,7 @@ int show_sign_count (int input)
 
 ConsoleKeyInfo choise; //ввод клавиши
 Console.Clear();
-Console.WriteLine("Для значений ввода значений нажмите любую клавишу, для выхода из программы нажмите q");
+Console.WriteLine("Для ввода значений нажмите любую клавишу, для выхода из программы нажмите q");
 choise=Console.ReadKey();
 while (choise.Key!=ConsoleKey.Q)
 {
@@ -68,6 +68,6 @@ while (choise.Key!=ConsoleKey.Q)
 
     Console.Clear();
     Console.WriteLine($"Вы ввели число {number} и хотели найти его {sign} цифру, результат: в числе {sign_count} цифр, {sign}ая цифра это {result}");
-    Console.WriteLine("Для значений ввода значений нажмите любую клавишу, для выхода из программы нажмите q");
+    Console.WriteLine("Для ввода значений нажмите любую клавишу, для выхода из программы нажмите q");
     choise=Console.ReadKey();
 }
