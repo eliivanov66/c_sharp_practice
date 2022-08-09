@@ -29,6 +29,7 @@ int check_int_input(string message)
     return input;
 }
 //метод вычленяющий нужный нам знак
+/*
 int show_sign_by_number(int input, int sign)
 {
     if (sign>=1)
@@ -56,7 +57,7 @@ int show_sign_count (int input)
     }
     return sign_count;
 }
-
+*/
 ConsoleKeyInfo choise; //ввод клавиши
 Console.Clear();
 Console.WriteLine("Для ввода значений нажмите любую клавишу, для выхода из программы нажмите q");
