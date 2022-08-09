@@ -59,7 +59,7 @@ int show_sign_count (int input)
 
 ConsoleKeyInfo choise; //ввод клавиши
 Console.Clear();
-Console.WriteLine("Для значений ввода значений нажмите любую клавишу, для выхода из программы нажмите q");
+Console.WriteLine("Для ввода значений нажмите любую клавишу, для выхода из программы нажмите q");
 choise=Console.ReadKey();
 string[] day_of_week = {"Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"};
 while (choise.Key!=ConsoleKey.Q)
@@ -82,6 +82,6 @@ while (choise.Key!=ConsoleKey.Q)
     }
 
 
-    Console.WriteLine("Для значений ввода значений нажмите любую клавишу, для выхода из программы нажмите q");
+    Console.WriteLine("Для ввода значений нажмите любую клавишу, для выхода из программы нажмите q");
     choise=Console.ReadKey();
 }
