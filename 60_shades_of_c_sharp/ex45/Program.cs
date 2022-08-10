@@ -90,7 +90,7 @@ while (choise.Key!=ConsoleKey.Q)
         buffer_array[i]=generate_Fibonacci(i);
     }
     //вывод результов
-    Console.WriteLine("Запрошенный рад Фибоначчи: ");
+    Console.WriteLine("Запрошенный ряд Фибоначчи: ");
     display_array(buffer_array);
     Console.WriteLine(); //переход на новую строку
     Array.Clear(buffer_array); //очистка массива
