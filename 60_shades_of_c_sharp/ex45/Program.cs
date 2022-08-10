@@ -90,15 +90,8 @@ while (choise.Key!=ConsoleKey.Q)
         buffer_array[i]=generate_Fibonacci(i);
     }
     //вывод результов
-    Console.WriteLine("Запрошенный радя Фибоначчи: ");
+    Console.WriteLine("Запрошенный рад Фибоначчи: ");
     display_array(buffer_array);
-    /*
-    -----+-----+-----+ max_size - i max_size - i -1 max_size - i -1
-    ----++----++----++ max_size - i max_size - i -1 max_size - i -1
-    ---+++---+++---+++
-    --++++--++++--++++
-     -+++++-+++++-+++++
-    */
     Console.WriteLine(); //переход на новую строку
     Array.Clear(buffer_array); //очистка массива
     lenght=0;
