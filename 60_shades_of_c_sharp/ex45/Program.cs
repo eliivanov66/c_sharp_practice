@@ -65,7 +65,7 @@ void display_array (int[] input)
     {
         string space=string.Concat(Enumerable.Repeat(" " , max_size-show_sign_count(input[i]) + 1));
         Console.Write($"|{input[i]}{space}"); 
-        if (((i+1)%12)==0) Console.WriteLine(); //переход на новую строку
+        if (((i+1)%10)==0) Console.WriteLine(); //переход на новую строку
     }
 }
 
