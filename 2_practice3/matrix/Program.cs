@@ -2,16 +2,6 @@
 Задача о сложении матриц
 */
 //using Library; //библиотека
-    //автозаполнение массива указанной глубины
-    int[] init_int_array_auto(int number, int start, int end)
-    {
-        int[] temp_array=new int[number]; //создание массива заданной глубины
-        for (int i = 0; (i < temp_array.Count()); i++)
-        {   
-            temp_array[i]=randomizer(start, end);
-        }
-        return temp_array;
-    }
 
     int randomizer(int start, int end)
     {
@@ -42,17 +32,6 @@
         return input;
     }
 
-    void display_array (int[] input)
-    {
-        int max_size=show_sign_count(find_max_array(input)); //поиск длины максимального из чисел
-        for (int i = 0; i < (input.Count()); i++)
-        {
-            string space=string.Concat(Enumerable.Repeat(" " , max_size-show_sign_count(input[i]) + 1));
-            Console.Write($"|{input[i]}{space}"); 
-            if (((i+1)%10)==0) Console.WriteLine(); //переход на новую строку
-        }
-    }
-
     //метод возвращающий количество знаков в числе
     int show_sign_count (int input)
     {
@@ -68,76 +47,52 @@
         return sign_count;
     }
 
-    int find_max_array(int[] input_array)
+    //поиск максимального значения в матрице
+    int find_max_matrix(int[,] arg_matrix)
     {
-        int max = input_array[0];
-        for (int i = 0; (i < input_array.Count()); i++)
+        int max = arg_matrix[0,0];
+        for (int i = 0; i < arg_matrix.GetLength(0); i++)
         {
-            if (input_array[i]>max) max=input_array[i]; continue;
+            for (int j = 0; j <  arg_matrix.GetLength(1); j++)
+            {
+                if (arg_matrix[i,j]>max) max=arg_matrix[i,j]; continue;
+            }
+            continue;
         }
         return max;
     }
-
     //метод поиска минимального значения в массиве
-    int find_min_array(int[] input_array)
+    int find_min_matrix(int[,] arg_matrix)
     {
-        int min = input_array[0];
-        for (int i = 0; (i < input_array.Count()); i++)
+        int min = arg_matrix[0,0];
+        for (int i = 0; i < arg_matrix.GetLength(0); i++)
         {
-            if (input_array[i]<min) min=input_array[i]; continue;
+            for (int j = 0; j <  arg_matrix.GetLength(1); j++)
+            {
+                if (arg_matrix[i,j]<min) min=arg_matrix[i,j]; continue;
+            }
+            continue;
         }
         return min;
-    }
- 
-    //метод суммирования одномерных матриц
-    int[] matrix_sum(int[] arg_array1, int[] arg_array2)
-    {
-        int[] result=new int[arg_array1.Count()]; //буфферного массива массива
-        if (arg_array1.Count()!=arg_array2.Count())
-        {
-            Console.WriteLine("Размерность матриц не совпадает");
-        }
-        else
-        {
-
-            for (int i = 0; i < (arg_array1.Count()); i++)
-            {
-                result[i]=arg_array1[i]+arg_array2[i];
-            }
-        }
-        return result;
-    }
-
-    //метод умножения одномерных матриц
-    int matrix_mult(int[] arg_array1, int[] arg_array2)
-    {
-        int result=0; //результат умножения матриц
-        if (arg_array1.Count()!=arg_array2.Count())
-        {
-            Console.WriteLine("Размерность матриц не совпадает");
-        }
-        else
-        {
-
-            for (int i = 0; i < (arg_array1.Count()); i++)
-            {
-                result=result + arg_array1[i]*arg_array2[i];
-            }
-        }
-        return result;
     }
 
     //метод рисования матрицы
     void display_matrix(int[,] arg_matrix)
     {
-        int[] temp_array = new int[6];
+        int min=find_min_matrix(arg_matrix); //минимальное значение в матрице
+        int max=find_max_matrix(arg_matrix); //максимальное значение в матрице
+        int max_element_lenght=show_sign_count(max); //максимальная значение
         //построчное заполнение матрицы
         for (int i = 0; i < arg_matrix.GetLength(0); i++) //x
         {
+            Console.Write("|"); 
             for (int j = 0; j < arg_matrix.GetLength(1); j++) //y
             {
-            Console.Write($" {arg_matrix[i,j]}"); //вывод результата
+            //красивое отображение матрицы
+            string space=string.Concat(Enumerable.Repeat(" " , max_element_lenght-show_sign_count(arg_matrix[i,j]) + 1));
+            Console.Write($"{arg_matrix[i,j]}{space}"); //вывод результата
             }
+        Console.Write("|");    
         Console.WriteLine();
         }
     }
