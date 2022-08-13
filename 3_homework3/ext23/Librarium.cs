@@ -101,6 +101,22 @@ public class Librarium
         }
     }
 
+    //метод зеркального отображения числа
+    public static int mirror_int (int input)
+    {
+        int result=0;
+        int sign=1; //знак
+        if (input<0) sign=-1; //запоминаем какой знак был у числа
+        int temp_input=Math.Abs(input);
+        while (temp_input>0)
+        {
+            result = result * 10 + temp_input % 10; 
+            temp_input=temp_input /10;
+
+        }
+        return result*sign;
+    }
+
     //метод проверяющий является ли число палиндромом
     public static bool check_palindrom(int arg_input)
     {   
@@ -246,5 +262,278 @@ public class Librarium
         }   
     }
 
+    //метод возвращающий координаты в трёхмерном пространстве из строки
+    public static void get_3d_coordinates(string arg_input, ref int arg_x, ref int arg_y, ref int arg_z, ref int arg_retval)
+    {
+        string temp_input=arg_input.Replace(" ,",",");
+        temp_input=temp_input.Replace(",,",",");
+        temp_input=temp_input.Replace(", ",",");
+        temp_input=temp_input.Replace(" .",".");
+        temp_input=temp_input.Replace("..",".");
+        temp_input=temp_input.Replace(". ",".");
+        temp_input=temp_input.Replace(" ;",";");
+        temp_input=temp_input.Replace(";;",";");
+        temp_input=temp_input.Replace("; ",";");
+        temp_input=temp_input.Replace("  "," ");
+        temp_input=temp_input.Replace(" _","_");
+        temp_input=temp_input.Replace("__","_");
+        temp_input=temp_input.Replace("_ ","_");
+        List<char> list_numbers = new List<char> {'0','1','2','3','4','5','6','7','8','9'};
+        List<char> list_start   = new List<char> {'[','(','{'};
+        List<char> list_end     = new List<char> {']',')','}'};
+        List<char> list_space   = new List<char> {'.',',',';',' ', '_'};
+        List<char> list_ignore  = new List<char> {'-', '='};
+        char[] temp_user_input=temp_input.ToCharArray();
+        bool look_for_x=false;
+        bool look_for_y=false;
+        bool look_for_z=false;
+        int sign=1;
+        int power=0;
+        int number=0;
+        for (int i=0; i < temp_user_input.Length; i++)
+        {
+            //============================================================//
+            //==================   расчёт значений координат =============//
+            //============================================================//
+            //Значение координаты 
+            if ( (look_for_x || look_for_y || look_for_z) && (list_numbers.Contains(temp_user_input[i])) )
+            {
+                number= number + Convert.ToInt32(temp_input[i].ToString()) * Convert.ToInt32(Math.Pow(10, power));
+                power++;
+            }
 
+            //определение знака координаты
+            if ( (temp_user_input[i]=='-') )
+            {
+                sign=-1;
+            }
+
+            //============================================================//
+            //==================    Поиск координаты x ===================//
+            //============================================================//
+            //начало поиска x координаты
+            if (list_start.Contains(temp_user_input[i]))                                                   //если символ начала координат  
+            {
+                look_for_x=true;
+                power=0;
+                number=0;
+                continue;
+            }
+            if ((list_numbers.Contains(temp_user_input[i]) || temp_user_input[i]=='-') && !(look_for_x || look_for_y || look_for_z)) //если кто-то написал без скобок
+            {
+                look_for_x=true;
+                power=0;
+                number=0;
+                if (list_numbers.Contains(temp_user_input[i]))
+                {
+                    number= number + Convert.ToInt32(temp_input[i].ToString()) * Convert.ToInt32(Math.Pow(10, power));
+                    power++;
+                }
+            }
+
+            //============================================================//
+            //================== поиск координаты y ======================//
+            //============================================================//
+            //начало поиска y координаты 
+            if  ( (list_space.Contains(temp_user_input[i])) && (look_for_x) ) //знаки разделения
+            {
+                look_for_x=false;
+                arg_x=sign * mirror_int(number);
+                look_for_y=true;
+                sign=1;
+                power=0;
+                number=0;
+                continue;
+            }
+            //============================================================//
+            //================== поиск координаты z ======================//
+            //============================================================//
+            //начало поиска z координаты 
+            if  ( (list_space.Contains(temp_user_input[i])) && (look_for_y) ) //знаки разделения
+            {
+                look_for_y=false;
+                arg_y=sign * mirror_int(number);
+                look_for_z=true;
+                sign=1;
+                power=0;
+                number=0;
+                continue;
+            }
+
+            //окончание поиска координат 
+            if (( (list_end.Contains(temp_user_input[i])) && (look_for_z) ) || //знаки окончания поиска координат
+                ( i==temp_user_input.Length-1) )                               //строка закончилась
+            {
+                look_for_z=false;
+                arg_z=sign * mirror_int(number);
+                sign=1;
+                power=0;
+                number=0;
+                arg_retval=1; //координата успешно сформирована
+                break;
+            }
+
+
+            //некорректный ввод данных
+            if ( (list_end.Contains(temp_user_input[i])) && (look_for_x || look_for_y) )
+            {
+                Console.WriteLine($" {arg_input} : некорректный ввод, ранний символ окончания");
+                arg_x=0;
+                arg_y=0;
+                arg_z=0;
+                arg_retval=-1; //неверный ввод данных, код ошибки для отладки
+                break;
+            }
+            //некорректный ввод данных
+            if ( (list_start.Contains(temp_user_input[i])) && (look_for_x || look_for_y || look_for_z) )
+            {
+                Console.WriteLine($" {arg_input} : некорректный ввод, стока содержит два символа начала");
+                arg_x=0;
+                arg_y=0;
+                arg_z=0;
+                arg_retval=-2; //неверный ввод данных, код ошибки для отладки
+                break;
+            }
+            //некорректный ввод данных
+            if ( (list_numbers.Contains(temp_user_input[i])) !& //если символ не цифра
+                (list_space.Contains(temp_user_input[i])) !&   //если символ не разделитель
+                (list_start.Contains(temp_user_input[i])) !&   //если символ не символ начала ввода координат
+                (list_end.Contains(temp_user_input[i])) !&     //если символ не символ конца ввода координат   
+                (list_ignore.Contains(temp_user_input[i])) )   //если символ не спец символ знака или пробел
+            {
+                Console.WriteLine($" {arg_input} : некорректный ввод, строка содержит символы в координатах");
+                arg_x=0;
+                arg_y=0;
+                arg_z=0;
+                arg_retval=-3; //неверный ввод данных, код ошибки для отладки
+                break;
+            }
+        }
+    }
+
+    //метод возвращающий расстояние в трёхмерном пространстве для двух точек
+    public static double get_3d_distance(double x1, double y1, double z1, double x2, double y2, double z2)
+    {
+        return Math.Sqrt(Math.Pow((x2-x1),2) + Math.Pow((y2-y1),2) +Math.Pow((z2-z1),2));
+    }
+
+
+ //метод возвращающий координаты в трёхмерном пространстве из строки
+    public static void get_2d_coordinates(string arg_input, ref int arg_x, ref int arg_y, ref int arg_retval)
+    {
+        string temp_input=arg_input.Replace(" ,",",");
+        temp_input=temp_input.Replace(",,",",");
+        temp_input=temp_input.Replace(", ",",");
+        temp_input=temp_input.Replace(" .",".");
+        temp_input=temp_input.Replace("..",".");
+        temp_input=temp_input.Replace(". ",".");
+        temp_input=temp_input.Replace(" ;",";");
+        temp_input=temp_input.Replace(";;",";");
+        temp_input=temp_input.Replace("; ",";");
+        temp_input=temp_input.Replace("  "," ");
+        temp_input=temp_input.Replace(" _","_");
+        temp_input=temp_input.Replace("__","_");
+        temp_input=temp_input.Replace("_ ","_");
+        List<char> list_numbers = new List<char> {'0','1','2','3','4','5','6','7','8','9'};
+        List<char> list_start   = new List<char> {'[','(','{'};
+        List<char> list_end     = new List<char> {']',')','}'};
+        List<char> list_space   = new List<char> {'.',',',';',' ', '_'};
+        List<char> list_ignore  = new List<char> {'-', '='};
+        char[] temp_user_input=temp_input.ToCharArray();
+        bool look_for_x=false;
+        bool look_for_y=false;
+        int sign=1;
+        int power=0;
+        int number=0;
+        for (int i=0; i < temp_user_input.Length; i++)
+        {
+            //============================================================//
+            //==================   расчёт значений координат =============//
+            //============================================================//
+            //Значение координаты 
+            if ( (look_for_x || look_for_y) && (list_numbers.Contains(temp_user_input[i])) )
+            {
+                number= number + Convert.ToInt32(temp_input[i].ToString()) * Convert.ToInt32(Math.Pow(10, power));
+                power++;
+            }
+
+            //определение знака координаты
+            if ( (temp_user_input[i]=='-') )
+            {
+                sign=-1;
+            }
+
+            //============================================================//
+            //==================    Поиск координаты x ===================//
+            //============================================================//
+            //начало поиска x координаты
+            if (list_start.Contains(temp_user_input[i])) //если символ начала координат  
+            {
+                look_for_x=true;
+                power=0;
+                number=0;
+                continue;
+            }
+            if ((list_numbers.Contains(temp_user_input[i]) || temp_user_input[i]=='-') && !(look_for_x || look_for_y)) //если кто-то написал без скобок
+            {
+                look_for_x=true;
+                power=0;
+                number=0;
+                if (list_numbers.Contains(temp_user_input[i]))
+                {
+                    number= number + Convert.ToInt32(temp_input[i].ToString()) * Convert.ToInt32(Math.Pow(10, power));
+                    power++;
+                }
+            }
+
+            //============================================================//
+            //================== поиск координаты y ======================//
+            //============================================================//
+            //начало поиска y координаты 
+            if  (( (list_space.Contains(temp_user_input[i])) && (look_for_x) ) || //знаки разделения
+                 ( i==temp_user_input.Length-1) )                                 //строка закончилась
+            {
+                look_for_x=false;
+                arg_x=sign * mirror_int(number);
+                look_for_y=true;
+                sign=1;
+                power=0;
+                number=0;
+                break;
+            }
+
+            //некорректный ввод данных
+            if ( (list_end.Contains(temp_user_input[i])) && (look_for_x) )
+            {
+                Console.WriteLine($" {arg_input} : некорректный ввод, ранний символ окончания");
+                arg_x=0;
+                arg_y=0;
+                arg_retval=-1; //неверный ввод данных, код ошибки для отладки
+                break;
+            }
+            //некорректный ввод данных
+            if ( (list_start.Contains(temp_user_input[i])) && (look_for_x || look_for_y) )
+            {
+                Console.WriteLine($" {arg_input} : некорректный ввод, стока содержит два символа начала");
+                arg_x=0;
+                arg_y=0;
+                arg_retval=-2; //неверный ввод данных, код ошибки для отладки
+                break;
+            }
+            //некорректный ввод данных
+            if ( (list_numbers.Contains(temp_user_input[i])) !& //если символ не цифра
+                (list_space.Contains(temp_user_input[i])) !&   //если символ не разделитель
+                (list_start.Contains(temp_user_input[i])) !&   //если символ не символ начала ввода координат
+                (list_end.Contains(temp_user_input[i])) !&     //если символ не символ конца ввода координат   
+                (list_ignore.Contains(temp_user_input[i])) )   //если символ не спец символ знака или пробел
+            {
+                Console.WriteLine($" {arg_input} : некорректный ввод, строка содержит символы в координатах");
+                arg_x=0;
+                arg_y=0;
+                arg_retval=-3; //неверный ввод данных, код ошибки для отладки
+                break;
+            }
+        }
+    }
+    
 }
