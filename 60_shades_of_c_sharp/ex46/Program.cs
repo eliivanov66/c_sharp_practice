@@ -7,3 +7,13 @@
 при k = 2 получаем "(0,0) (4,0) (4,4) (0,4)"
 */
 //метод проверяющий вводимые значения - INT числа
+
+using static Librarium;
+
+int [,] result;
+int retval=0;
+
+Console.WriteLine("Введите строку с координатами многоугольника:");
+string user_input=$"{Console.ReadLine()}";
+result=get_2d_coordinates(user_input, ref retval);
+display_matrix(result);
