@@ -10,10 +10,40 @@
 
 using static Librarium;
 
-int [,] result;
-int retval=0;
+//переменные
+Librarium obj=new Librarium(); //объект для доступа к нестатичным методам
+int [,] result;                //матрица с двумерными координатами
+int retval=0;                  //результат считывания координат
+double k=0.0;                  //коэффициент маштабирования
 
-Console.WriteLine("Введите строку с координатами многоугольника:");
-string user_input=$"{Console.ReadLine()}";
-result=get_2d_coordinates(user_input, ref retval);
-display_matrix(result);
+
+
+
+ConsoleKeyInfo choise; //ввод клавиши
+Console.Clear();
+Console.WriteLine("Для ввода значений нажмите любую клавишу, для выхода из программы нажмите q");
+choise=Console.ReadKey();
+while (choise.Key!=ConsoleKey.Q)
+{
+    //запрос сторон многоугольника
+    Console.Clear();
+    retval=0;                  //результат считывания координат
+    k=0.0;                  //коэффициент маштабирования
+    Console.WriteLine("Введите строку с координатами многоугольника:");
+    string user_input=$"{Console.ReadLine()}";
+    result=get_2d_coordinates(user_input, ref retval);
+    Console.WriteLine("Начальные координаты многоугольница на осях xy: ");
+    display_matrix(result);
+
+    //запрос коэффициента
+    while (k<=0)
+    {
+        k = obj.check_input("Введите коэффициент k для преобразования маштабирования: ", k.GetType());
+    }
+    result=resize_2d_coordinates(result, k); //вызов метода маштабирования
+    Console.WriteLine("Координаты многоугольница на осях xy после маштабирования: ");
+    display_matrix(result);
+
+    Console.WriteLine("Для ввода значений нажмите любую клавишу, для выхода из программы нажмите q");
+    choise=Console.ReadKey();
+}

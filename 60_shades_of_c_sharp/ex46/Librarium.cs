@@ -159,6 +159,30 @@ public class Librarium
         }
         return max;
     }
+   
+    //поиск максимального значения в матрице по x или y
+    public static int find_max_matrix(int[,] arg_matrix, int arg_dimension)
+    {   
+        int max=0;
+        if (arg_dimension==0) //0 - поиск по x
+        {
+            max = arg_matrix[0,0];
+            for (int i = 0; i < arg_matrix.GetLength(0); i++)
+            {
+                if (arg_matrix[i,0]>max) max=arg_matrix[i,0]; continue;
+            }
+        }
+        if (arg_dimension!=0) //1 - поиск по y
+        {
+            max = arg_matrix[0,1];
+            for (int i = 0; i < arg_matrix.GetLength(0); i++)
+            {
+                if (arg_matrix[i,1]>max) max=arg_matrix[i,1]; continue;
+            }
+        }
+        return max;
+    }
+
     //метод поиска минимального значения в массиве
     public static int find_min_matrix(int[,] arg_matrix)
     {
@@ -174,21 +198,61 @@ public class Librarium
         return min;
     }
 
+    //метод поиска минимального значения в массиве
+    public static int find_min_matrix(int[,] arg_matrix, int arg_dimension)
+    {
+        int min=0;
+        if (arg_dimension==0) //0 - поиск по x
+        {
+            min = arg_matrix[0,0];
+            for (int i = 0; i < arg_matrix.GetLength(0); i++)
+            {
+                if (arg_matrix[i,0]<min) min=arg_matrix[i,0]; continue;
+            }
+        }
+        if (arg_dimension!=0) //1 - поиск по y
+        {
+            min = arg_matrix[0,1];
+            for (int i = 0; i < arg_matrix.GetLength(0); i++)
+            {
+                if (arg_matrix[i,1]<min) min=arg_matrix[i,1]; continue;
+            }
+        }
+        return min;
+    }
+
     //метод рисования матрицы
     public static void display_matrix(int[,] arg_matrix)
     {
         int min=find_min_matrix(arg_matrix); //минимальное значение в матрице
         int max=find_max_matrix(arg_matrix); //максимальное значение в матрице
-        int max_element_lenght=show_sign_count(max); //максимальная значение
+        int max_element_lenght=0;            //максимальная значение
+        if (Math.Abs(min)>=Math.Abs(max))    //максимальная значение символов
+        {
+            max_element_lenght=show_sign_count(min) + 1; //максимальная значение символов
+        }
+        else
+        {
+            max_element_lenght=show_sign_count(max); //максимальная значение символов
+        }
         //построчное заполнение матрицы
         for (int i = 0; i < arg_matrix.GetLength(0); i++) //x
         {
-            Console.Write("|"); 
+            Console.Write("||"); 
             for (int j = 0; j < arg_matrix.GetLength(1); j++) //y
             {
             //красивое отображение матрицы
-            string space=string.Concat(Enumerable.Repeat(" " , max_element_lenght-show_sign_count(arg_matrix[i,j]) + 1));
-            Console.Write($"{arg_matrix[i,j]}{space}"); //вывод результата
+            int sign_count=0;
+            if (arg_matrix[i,j]<0) 
+            {
+                sign_count=show_sign_count(Math.Abs(arg_matrix[i,j])) + 1;
+            }
+            else
+            {
+                sign_count=show_sign_count(Math.Abs(arg_matrix[i,j]));
+            }
+            string space=string.Concat(Enumerable.Repeat(" " , max_element_lenght-sign_count + 1));
+            Console.Write($"{arg_matrix[i,j]}{space}|"); //вывод результата
             }
         Console.Write("|");    
         Console.WriteLine();
@@ -626,7 +690,6 @@ public class Librarium
             {
                 look_for_x=false;
                 temp_coordinates[point_count,0]=sign * mirror_int(number);
-                Console.WriteLine($" x{point_count} = {temp_coordinates[point_count,0]}");
                 look_for_y=true;
                 sign=1;
                 power=0;
@@ -639,7 +702,6 @@ public class Librarium
             {
                 look_for_y=false;
                 temp_coordinates[point_count,1]=sign * mirror_int(number);
-                Console.WriteLine($" y{point_count} = {temp_coordinates[point_count,1]}");
                 sign=1;
                 power=0;
                 number=0;
@@ -694,4 +756,20 @@ public class Librarium
     return temp_coordinates;
     }
     
+    public static int[,] resize_2d_coordinates(int[,] arg_matrix, double k)
+    {
+        int[,] buffer_matrix=arg_matrix;
+        if (k<=0 || (arg_matrix.GetLength(0)==1)) return arg_matrix;
+        else
+        {
+            for (int i = 0; i < arg_matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < arg_matrix.GetLength(1); j++)
+                {
+                    buffer_matrix[i,j]=Convert.ToInt32(k * (Convert.ToDouble(arg_matrix[i,j])));
+                }
+            }
+            return buffer_matrix;
+        }
+    }
 }
