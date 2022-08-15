@@ -13,7 +13,6 @@ Console.WriteLine("Для ввода значений нажмите любую 
 choise=Console.ReadKey();
 while (choise.Key!=ConsoleKey.Q)
 {
-    //запрос сторон многоугольника
     Console.Clear();
     //массив 1
     answer_1=0;
