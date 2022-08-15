@@ -47,18 +47,18 @@ void display_array (int[] input)
         Console.Write("{");
         for (int i = 0; i < (input.GetLength(0)); i++)
         {
-            Console.Write($" {input[i]}"); //вывод результата  
+            Console.Write($"{input[i]}"); //вывод результата  
             if (i!=0 && ((i % 10) == 0) ) 
             {
-                Console.Write(",");
+                //Console.Write(",");
                 Console.WriteLine();
             }
             else
             {
-                Console.Write(",");
+                //Console.Write(",");
             }
         }
-        Console.Write(" }"); Console.WriteLine();
+        Console.Write("}"); Console.WriteLine();
     }
 
 //метод поиска минимального значения в массиве
@@ -81,8 +81,6 @@ int find_max_array(int[] input_array)
         }
         return max;
     }
-
-
 
 //код задачи
 int N=0;

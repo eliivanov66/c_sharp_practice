@@ -1,0 +1,15 @@
+D:\Python\c_sharp_practice\2_practice4\general_task_2\obj\Debug\net6.0\general_task_2.csproj.AssemblyReference.cache
+D:\Python\c_sharp_practice\2_practice4\general_task_2\obj\Debug\net6.0\general_task_2.GeneratedMSBuildEditorConfig.editorconfig
+D:\Python\c_sharp_practice\2_practice4\general_task_2\obj\Debug\net6.0\general_task_2.AssemblyInfoInputs.cache
+D:\Python\c_sharp_practice\2_practice4\general_task_2\obj\Debug\net6.0\general_task_2.AssemblyInfo.cs
+D:\Python\c_sharp_practice\2_practice4\general_task_2\obj\Debug\net6.0\general_task_2.csproj.CoreCompileInputs.cache
+D:\Python\c_sharp_practice\2_practice4\general_task_2\bin\Debug\net6.0\general_task_2.exe
+D:\Python\c_sharp_practice\2_practice4\general_task_2\bin\Debug\net6.0\general_task_2.deps.json
+D:\Python\c_sharp_practice\2_practice4\general_task_2\bin\Debug\net6.0\general_task_2.runtimeconfig.json
+D:\Python\c_sharp_practice\2_practice4\general_task_2\bin\Debug\net6.0\general_task_2.dll
+D:\Python\c_sharp_practice\2_practice4\general_task_2\bin\Debug\net6.0\general_task_2.pdb
+D:\Python\c_sharp_practice\2_practice4\general_task_2\obj\Debug\net6.0\general_task_2.dll
+D:\Python\c_sharp_practice\2_practice4\general_task_2\obj\Debug\net6.0\refint\general_task_2.dll
+D:\Python\c_sharp_practice\2_practice4\general_task_2\obj\Debug\net6.0\general_task_2.pdb
+D:\Python\c_sharp_practice\2_practice4\general_task_2\obj\Debug\net6.0\general_task_2.genruntimeconfig.cache
+D:\Python\c_sharp_practice\2_practice4\general_task_2\obj\Debug\net6.0\ref\general_task_2.dll
