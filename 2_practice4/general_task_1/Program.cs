@@ -61,27 +61,6 @@ void display_array (int[] input)
         Console.Write("}"); Console.WriteLine();
     }
 
-//метод поиска минимального значения в массиве
-int find_min_array(int[] input_array)
-    {
-        int min = input_array[0];
-        for (int i = 0; (i < input_array.Count()); i++)
-        {
-            if (input_array[i]<min) min=input_array[i]; continue;
-        }
-        return min;
-    }
-//метод поиска максимального значения в массиве
-int find_max_array(int[] input_array)
-    {
-        int max = input_array[0];
-        for (int i = 0; (i < input_array.Count()); i++)
-        {
-            if (input_array[i]>max) max=input_array[i]; continue;
-        }
-        return max;
-    }
-
 //код задачи
 int N=0;
 while (N<=0)
