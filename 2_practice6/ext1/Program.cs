@@ -1,6 +1,7 @@
 ﻿/*Составить частотный словарь элементов двумерного массива */
 using System.Globalization;
 
+/*
 //заполнение массива
 void fill_array_char(ref char[,] input)
 {
@@ -25,7 +26,7 @@ void print_array_char(char[,] input)
         Console.WriteLine();
     }
 }
-
+*/
 
 double[] power_array (string arg_input, string arg_alphafet)
 {
