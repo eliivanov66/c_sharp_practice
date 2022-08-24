@@ -6,12 +6,16 @@ char[,] field      =new char[16,16];
 char[,] figure;//=new int[4,4] {{0,0,0,0},{0,0,0,0},{0,1,0,0},{1,1,1,0}};
 char[,] line       =new char[1,4] {{_1,_1,_1,_1}};
 char[,] square     =new char[2,2] {{_1,_1},{_1,_1}};
-char[,] angle      =new char[3,2] {{_1,_0},{_1,_0},{_1,_1}};
+char[,] angle_left =new char[3,2] {{_0,_1},{_0,_1},{_1,_1}};
+char[,] angle_right=new char[3,2] {{_1,_0},{_1,_0},{_1,_1}};
 char[,] sig_left   =new char[3,2] {{_1,_0},{_1,_1},{_0,_1}};
 char[,] sig_right  =new char[3,2] {{_0,_1},{_1,_1},{_1,_0}};
 char[,] triangle   =new char[2,3] {{_0,_1,_0},{_1,_1,_1}};
+char[,] star       =new char[3,3] {{_0,_1,_0},{_1,_1,_1},{_0,_1,_0}};
+char[,] snake_left =new char[3,3] {{_1,_0,_0},{_1,_1,_1},{_0,_0,_1}};
+char[,] snake_right=new char[3,3] {{_0,_0,_1},{_1,_1,_1},{_1,_0,_0}};
 
-List<char[,]> list_figures = new List<char[,]> {line,square,angle,sig_left,sig_right,triangle};
+List<char[,]> list_figures = new List<char[,]> {line,square,angle_left, angle_right,sig_left,sig_right,triangle,star, snake_left,sig_right};
 
 
 int start_x=0;
@@ -23,7 +27,7 @@ int start_y=field.GetLength(1)/2;
 print_figure(field);
 ConsoleKeyInfo choise; //ввод клавиши
 Console.WriteLine("Вверх/вниз поворот фигуры. Для выхода нажмите Q");
-figure=list_figures[Random.Shared.Next(0,6)]; //берём любую фигуру из листа
+figure=list_figures[Random.Shared.Next(0,list_figures.Count)]; //берём любую фигуру из листа
 place_figures(ref field, figure, start_x, start_y); //рисование фигуры на поле
 print_figure(field);
 choise=Console.ReadKey();
@@ -39,7 +43,7 @@ while (choise.Key!=ConsoleKey.Q)
         store_figures(ref field, figure, start_x, start_y);
         start_x=0; 
         start_y=field.GetLength(1)/2;
-        figure=list_figures[Random.Shared.Next(0,6)]; //берём любую фигуру из листа  
+        figure=list_figures[Random.Shared.Next(0,list_figures.Count)]; //берём любую фигуру из листа  
     }
     place_figures(ref field, figure, start_x, start_y); //рисование фигуры на поле
     print_figure(field);
