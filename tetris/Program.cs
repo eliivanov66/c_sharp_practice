@@ -1,6 +1,6 @@
 ﻿
 using static My_tetris;
-char _0='0';
+char _0=' ';
 char _1=Convert.ToChar(9632);
 char[,] field      =new char[16,16];
 char[,] figure;//=new int[4,4] {{0,0,0,0},{0,0,0,0},{0,1,0,0},{1,1,1,0}};
