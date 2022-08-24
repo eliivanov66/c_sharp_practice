@@ -1,16 +1,17 @@
 ﻿
 using static My_tetris;
+char _0='0';
+char _1=Convert.ToChar(9632);
+char[,] field      =new char[16,16];
+char[,] figure;//=new int[4,4] {{0,0,0,0},{0,0,0,0},{0,1,0,0},{1,1,1,0}};
+char[,] line       =new char[1,4] {{_1,_1,_1,_1}};
+char[,] square     =new char[2,2] {{_1,_1},{_1,_1}};
+char[,] angle      =new char[3,2] {{_1,_0},{_1,_0},{_1,_1}};
+char[,] sig_left   =new char[3,2] {{_1,_0},{_1,_1},{_0,_1}};
+char[,] sig_right  =new char[3,2] {{_0,_1},{_1,_1},{_1,_0}};
+char[,] triangle   =new char[2,3] {{_0,_1,_0},{_1,_1,_1}};
 
-int[,] field=new int[16,16];
-int[,] figure;//=new int[4,4] {{0,0,0,0},{0,0,0,0},{0,1,0,0},{1,1,1,0}};
-int[,] line       =new int[1,4] {{1,1,1,1}};
-int[,] square     =new int[2,2] {{1,1},{1,1}};
-int[,] angle      =new int[3,2] {{1,0},{1,0},{1,1}};
-int[,] sig_left   =new int[3,2] {{1,0},{1,1},{0,1}};
-int[,] sig_right  =new int[3,2] {{0,1},{1,1},{1,0}};
-int[,] triangle   =new int[2,3] {{0,1,0},{1,1,1}};
-
-List<int[,]> list_figures = new List<int[,]> {line,square,angle,sig_left,sig_right,triangle};
+List<char[,]> list_figures = new List<char[,]> {line,square,angle,sig_left,sig_right,triangle};
 
 
 int start_x=0;
@@ -42,7 +43,6 @@ while (choise.Key!=ConsoleKey.Q)
 
     place_figures(ref field, figure, start_x, start_y); //рисование фигуры на поле
     print_figure(field);
-    Console.WriteLine($"x= {start_x}, y={start_y}");
     choise=Console.ReadKey();
     //}
 

@@ -1,6 +1,6 @@
 public class My_tetris
 {
-    public static void print_figure(int[,] input)
+    public static void print_figure(char[,] input)
     {
         for (int i=0; i<input.GetLength(0); i++)
         {
@@ -11,20 +11,20 @@ public class My_tetris
             Console.WriteLine();
         }
     }
-    public static void rotate_figure(ref int[,] arg_figure, int arg_angle, bool arg_direction)
+    public static void rotate_figure(ref char[,] arg_figure, int arg_angle, bool arg_direction)
     {
-        int[,] result_figure;
-        int[,] buffer_figure;
+        char[,] result_figure;
+        char[,] buffer_figure;
 
         if (arg_figure.GetLength(0)>=arg_figure.GetLength(1))
         {
-            result_figure=new int[arg_figure.GetLength(0),arg_figure.GetLength(0)];
-            buffer_figure=new int[arg_figure.GetLength(0),arg_figure.GetLength(0)];
+            result_figure=new char[arg_figure.GetLength(0),arg_figure.GetLength(0)];
+            buffer_figure=new char[arg_figure.GetLength(0),arg_figure.GetLength(0)];
         }
         else
         {
-            result_figure=new int[arg_figure.GetLength(1),arg_figure.GetLength(1)];
-            buffer_figure=new int[arg_figure.GetLength(1),arg_figure.GetLength(1)];
+            result_figure=new char[arg_figure.GetLength(1),arg_figure.GetLength(1)];
+            buffer_figure=new char[arg_figure.GetLength(1),arg_figure.GetLength(1)];
         }
 
         for (int i=0; i<arg_figure.GetLength(0);i++)
@@ -75,27 +75,10 @@ public class My_tetris
         arg_figure=result_figure;
 
     }
-    public static void place_figures(ref int[,] arg_field, int[,] arg_figure)
+    public static void place_figures(ref char[,] arg_field, char[,] arg_figure, int arg_x, int arg_y)
     {
-        int[,] buffer_field=new int[arg_field.GetLength(0), arg_field.GetLength(1)];
-        //фигура меньше поля, всегда
-        if ( (arg_field.GetLength(0)>=arg_figure.GetLength(0)) &&
-             (arg_field.GetLength(1)>=arg_figure.GetLength(1)))
-        {
-            for (int i=0; i<arg_figure.GetLength(0);i++)
-            {
-                for (int j = 0; j < arg_figure.GetLength(1); j++)
-                {
-                    buffer_field[i,j]=arg_figure[i,j];
-                }
-            }
-            arg_field=buffer_field;
-        }
-
-    }
-    public static void place_figures(ref int[,] arg_field, int[,] arg_figure, int arg_x, int arg_y)
-    {
-        int[,] buffer_field=new int[arg_field.GetLength(0), arg_field.GetLength(1)];
+        Console.WriteLine($"Inside block x= {arg_x}, y={arg_y}");
+        char[,] buffer_field=new char[arg_field.GetLength(0), arg_field.GetLength(1)];
         //фигура меньше поля, всегда
         if ( (arg_field.GetLength(0)>=arg_figure.GetLength(0)+arg_x) &&
              (arg_field.GetLength(1)>=arg_figure.GetLength(1)+arg_y))
@@ -108,23 +91,6 @@ public class My_tetris
                 }
             }
             arg_field=buffer_field;
-        }
-    }
-
-    public static void memory_figures(ref int[,] arg_field, int[,] arg_figure, int arg_x, int arg_y)
-    {
-        //фигура меньше поля, всегда
-        if ( (arg_field.GetLength(0)>=arg_figure.GetLength(0)+arg_x) &&
-             (arg_field.GetLength(1)>=arg_figure.GetLength(1)+arg_y))
-        {
-            for (int i=0; i<arg_figure.GetLength(0);i++)
-            {
-                for (int j = 0; j < arg_figure.GetLength(1); j++)
-                {
-                    arg_field[i+arg_x,j+arg_y]=arg_figure[i,j];
-                }
-            }
-            //arg_field=buffer_field;
         }
     }
 }
