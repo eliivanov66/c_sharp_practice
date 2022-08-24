@@ -1,6 +1,6 @@
 ﻿
 using static My_tetris;
-char _0=' ';
+char _0='0';
 char _1=Convert.ToChar(9632);
 char[,] field      =new char[16,16];
 char[,] figure;//=new int[4,4] {{0,0,0,0},{0,0,0,0},{0,1,0,0},{1,1,1,0}};
@@ -20,7 +20,7 @@ int start_y=field.GetLength(1)/2;
 //0000
 //0100
 //1110
-
+print_figure(field);
 ConsoleKeyInfo choise; //ввод клавиши
 Console.WriteLine("Вверх/вниз поворот фигуры. Для выхода нажмите Q");
 figure=list_figures[Random.Shared.Next(0,6)]; //берём любую фигуру из листа
@@ -36,11 +36,11 @@ while (choise.Key!=ConsoleKey.Q)
     //{
     if (start_x+figure.GetLength(0)==field.GetLength(0))
     {
+        store_figures(ref field, figure, start_x, start_y);
         start_x=0; 
         start_y=field.GetLength(1)/2;
-        figure=list_figures[Random.Shared.Next(0,6)]; //берём любую фигуру из листа
+        figure=list_figures[Random.Shared.Next(0,6)]; //берём любую фигуру из листа  
     }
-
     place_figures(ref field, figure, start_x, start_y); //рисование фигуры на поле
     print_figure(field);
     choise=Console.ReadKey();

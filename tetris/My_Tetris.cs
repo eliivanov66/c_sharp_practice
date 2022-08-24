@@ -26,7 +26,8 @@ public class My_tetris
             result_figure=new char[arg_figure.GetLength(1),arg_figure.GetLength(1)];
             buffer_figure=new char[arg_figure.GetLength(1),arg_figure.GetLength(1)];
         }
-
+        init_field(ref result_figure, '0');
+        init_field(ref buffer_figure, '0');
         for (int i=0; i<arg_figure.GetLength(0);i++)
         {
             for (int j = 0; j < arg_figure.GetLength(1); j++)
@@ -75,10 +76,32 @@ public class My_tetris
         arg_figure=result_figure;
 
     }
+    
+    public static void store_figures(ref char[,] arg_field, char[,] arg_figure, int arg_x, int arg_y) 
+    {
+        //фигура меньше поля, всегда
+        for (int i=0; i<arg_figure.GetLength(0);i++)
+        {
+            for (int j = 0; j < arg_figure.GetLength(1); j++)
+            {
+                    arg_field[i+arg_x,j+arg_y]=arg_figure[i,j];
+            }
+        }
+        Console.WriteLine("State saved");
+    }
     public static void place_figures(ref char[,] arg_field, char[,] arg_figure, int arg_x, int arg_y)
     {
         Console.WriteLine($"Inside block x= {arg_x}, y={arg_y}");
+        Console.WriteLine($"Inside block figure_x= {arg_figure.GetLength(0)}, figure_y={arg_figure.GetLength(1)}");
+        //буфурное поле
         char[,] buffer_field=new char[arg_field.GetLength(0), arg_field.GetLength(1)];
+        for (int i=0; i<buffer_field.GetLength(0);i++)
+        {
+            for (int j = 0; j < buffer_field.GetLength(1); j++)
+            {
+                buffer_field[ i, j]='0';
+            }
+        }
         //фигура меньше поля, всегда
         if ( (arg_field.GetLength(0)>=arg_figure.GetLength(0)+arg_x) &&
              (arg_field.GetLength(1)>=arg_figure.GetLength(1)+arg_y))
@@ -87,10 +110,21 @@ public class My_tetris
             {
                 for (int j = 0; j < arg_figure.GetLength(1); j++)
                 {
-                    buffer_field[i+arg_x,j+arg_y]=arg_figure[i,j];
+                    buffer_field[ i+ arg_x, j+ arg_y]=arg_figure[i,j];
                 }
             }
             arg_field=buffer_field;
+        }
+    }
+    public static void init_field(ref char[,] arg_field, char arg_symbol)
+    {
+
+        for (int i=0; i<arg_field.GetLength(0);i++)
+        {
+            for (int j = 0; j < arg_field.GetLength(1); j++)
+            {
+                arg_field[ i, j]=arg_symbol;
+            }
         }
     }
 }
