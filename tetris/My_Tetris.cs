@@ -113,37 +113,45 @@ public class My_tetris
         }
         return result;
     }
-    public static bool line_is_filled(char[,] arg_field)
+    public static (bool,int) line_analyse(char[,] arg_field)
     {
         bool line=false;
-        for (int i = 0; i < arg_field.GetLength(1); i++)
+        int line_number=0;
+        for (int i = 0; i < arg_field.GetLength(0); i++)
         {
-            if (arg_field[arg_field.GetLength(0)-1,i]!='0') //просмотр значений на последней строке
-            {    
-                line=true;
-
-            }
-            else 
+            if (line) break;
+            for (int j=0; j<arg_field.GetLength(1); j++)
             {
-                line=false;
-                break;
+                if (arg_field[i,j]!='0') //просмотр значений на последней строке
+                {
+                    line=true;
+                    line_number=i;
+                }
+                else
+                {
+                    line=false;
+                    line_number=0;
+                    break;
+                }
             }
         }
-        return line;
+        return (line,line_number);
     }
 
-    public static char[,] remove_line(char[,] arg_field)
+    public static char[,] remove_line(char[,] arg_field, int arg_line_number)
     {
+        int m=0;
         char[,] buffer_field=new char[arg_field.GetLength(0), arg_field.GetLength(1)];
-        for (int i=0; i < arg_field.GetLength(1); i++)
+        for (int j=0; j < arg_field.GetLength(1); j++)
         {
-            buffer_field[0,i]='0';
+            buffer_field[0,j]='0';
         }
-        for (int i = 0; i < arg_field.GetLength(0); i++) //i это строка
+        for (int i = 1; i < arg_field.GetLength(0); i++) //i это строка
         {
+            if (i<=arg_line_number) m=-1; else m=0;
             for (int j = 0; j < arg_field.GetLength(1); j++)
             {
-                buffer_field[i+1,j]=arg_field[i, j];
+                buffer_field[i,j]=arg_field[i + m, j];
             }
         }
         return buffer_field;
