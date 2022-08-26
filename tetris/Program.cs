@@ -24,6 +24,7 @@ int start_y=field.GetLength(1)/2;
 //0000
 //0100
 //1110
+Console.CursorVisible=false;
 print_figure(field);
 ConsoleKeyInfo choise; //ввод клавиши
 Console.WriteLine("Вверх/вниз поворот фигуры. Для выхода нажмите Q");
