@@ -2,6 +2,7 @@ public class My_tetris
 {
     public static void print_figure(char[,] input)
     {
+        Console.Clear();
         for (int i=0; i<input.GetLength(0); i++)
         {
             for (int j=0; j<input.GetLength(1); j++)
@@ -55,7 +56,7 @@ public class My_tetris
     }
     public static char[,] place_figures(char[,] arg_field, char[,] arg_figure, int arg_x, int arg_y)
     {
-        Console.Clear();
+        //Console.Clear();
         //буфурное поле
         char[,] buffer_field=new char[arg_field.GetLength(0), arg_field.GetLength(1)];
         for (int i=0; i<arg_field.GetLength(0);i++)
@@ -137,7 +138,6 @@ public class My_tetris
         }
         return (line,line_number);
     }
-
     public static char[,] remove_line(char[,] arg_field, int arg_line_number)
     {
         int m=0;

@@ -2,8 +2,8 @@
 using static My_tetris;
 char _0='0';
 char _1=Convert.ToChar(9632);
-char[,] field      =new char[16,16];
-char[,] fill_field =new char[16,16];
+char[,] field      =new char[15,16];
+char[,] fill_field =new char[15,16];
 char[,] figure;
 char[,] line       =new char[1,4] {{_1,_1,_1,_1}};
 char[,] square     =new char[2,2] {{_1,_1},{_1,_1}};
@@ -19,6 +19,7 @@ char[,] snake_right=new char[3,3] {{_0,_0,_1},{_1,_1,_1},{_1,_0,_0}};
 //List<char[,]> list_figures = new List<char[,]> {line,square,angle_left, angle_right,sig_left,sig_right,triangle,star, snake_left,snake_right};
 List<char[,]> list_figures = new List<char[,]> {line,square,angle_left, angle_right,sig_left,sig_right,triangle};
 
+//переменные
 int coord_x=0;                        //координата фигуры по X
 int coord_y=field.GetLength(1)/2;     //координата фигуры по Y
 int size_x=0;                         //размер фигуры по X
@@ -26,13 +27,13 @@ int size_y=0;                         //размер фигуры по Y
 bool floor_collision=false;           //фигура попала на заполненное поле
 (bool,int) reset_level=(false,0);     //выстроена линия, обнуляем
 int score=0;                          //очки
-
+int speed=500;                        //скорость задержки между движениями, мсек
+ConsoleKeyInfo choise;                //переменная ввода клавиши
+//инициализация поля и поля результатов, первой фигуры
 init_field(ref fill_field,'0');
 init_field(ref field,'0');
 print_figure(fill_field);
-ConsoleKeyInfo choise; //ввод клавиши
 figure=list_figures[Random.Shared.Next(0,list_figures.Count)]; //берём любую фигуру из листа
-
 //поток отрисовки фигуры на плоскости
 new Thread(() =>
 {
@@ -49,20 +50,20 @@ new Thread(() =>
         coord_x=0; 
         coord_y=field.GetLength(1)/2;
         figure=list_figures[Random.Shared.Next(0,list_figures.Count)]; //берём любую фигуру из листа
-        Console.Beep(500,100);
-    }
-    //удаление заполненных строк
-    reset_level=line_analyse(fill_field); //проверка собрана ли нижняя линия
-    while (reset_level.Item1)
-    {
-        fill_field=remove_line(fill_field, reset_level.Item2);
+        //удаление заполненных строк
         reset_level=line_analyse(fill_field); //проверка собрана ли нижняя линия
-        score++;
+        while (reset_level.Item1)
+        {
+            fill_field=remove_line(fill_field, reset_level.Item2);
+            reset_level=line_analyse(fill_field); //проверка собрана ли нижняя линия
+            score++;
+        }
     }
     //рисование поля и фигуры на нём
     field=place_figures(fill_field, figure, coord_x, coord_y); //рисование фигуры на поле
     print_figure(field);
-    Thread.Sleep(1000);
+    Console.WriteLine($"У вас {score} очков, скорость падения {speed}");
+    Thread.Sleep(speed);
     coord_x++;
   }
 }).Start();
@@ -70,8 +71,6 @@ new Thread(() =>
 //поток управления
 new Thread(() =>
 {
-    Console.CursorVisible=false; //невидимый курсор
-    choise=Console.ReadKey();
     while (true)
     {
         choise=Console.ReadKey();
@@ -82,7 +81,9 @@ new Thread(() =>
            )
         {
             Console.Clear();
+            Console.WriteLine($"=============================");
             Console.WriteLine($"Ваш результат - {score} очков");
+            Console.WriteLine($"=============================");
             Environment.Exit(0); //выход из приложения
         }
         if (choise.Key==ConsoleKey.UpArrow)
@@ -101,6 +102,14 @@ new Thread(() =>
         if (choise.Key==ConsoleKey.DownArrow)
         {
             if (coord_x+size_x<field.GetLength(0)) coord_x++; //движение вниз
+        }
+        if (choise.Key==ConsoleKey.S)
+        {
+            if (speed<1900) speed+=100; //замедление скорости падения
+        }
+        if (choise.Key==ConsoleKey.A)
+        {
+            if (speed>200) speed-=100;  //увеличение скорости падения
         }
     }
 }).Start();
