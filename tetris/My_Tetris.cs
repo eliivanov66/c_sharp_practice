@@ -105,11 +105,12 @@ public class My_tetris
             {
                 for (int j = 0; j < arg_figure.GetLength(1); j++)
                 {
-                    if ((arg_field[i + arg_x, j + arg_y]!='0') && (arg_field[i + arg_x, j + arg_y]==arg_figure[i,j]))  
+                    if ((arg_field[i + arg_x, j + arg_y]!='0') && (arg_field[i + arg_x , j + arg_y]==arg_figure[i,j]))  
                     {    
-                        result=true;
+                        result=true; break;
                     }
                 }
+                if (result) break;
             }
         }
         return result;
