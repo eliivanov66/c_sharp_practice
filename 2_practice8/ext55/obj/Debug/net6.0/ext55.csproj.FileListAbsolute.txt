@@ -1,0 +1,15 @@
+D:\Python\c_sharp_practice\2_practice8\ext55\obj\Debug\net6.0\ext55.csproj.AssemblyReference.cache
+D:\Python\c_sharp_practice\2_practice8\ext55\obj\Debug\net6.0\ext55.GeneratedMSBuildEditorConfig.editorconfig
+D:\Python\c_sharp_practice\2_practice8\ext55\obj\Debug\net6.0\ext55.AssemblyInfoInputs.cache
+D:\Python\c_sharp_practice\2_practice8\ext55\obj\Debug\net6.0\ext55.AssemblyInfo.cs
+D:\Python\c_sharp_practice\2_practice8\ext55\obj\Debug\net6.0\ext55.csproj.CoreCompileInputs.cache
+D:\Python\c_sharp_practice\2_practice8\ext55\bin\Debug\net6.0\ext55.exe
+D:\Python\c_sharp_practice\2_practice8\ext55\bin\Debug\net6.0\ext55.deps.json
+D:\Python\c_sharp_practice\2_practice8\ext55\bin\Debug\net6.0\ext55.runtimeconfig.json
+D:\Python\c_sharp_practice\2_practice8\ext55\bin\Debug\net6.0\ext55.dll
+D:\Python\c_sharp_practice\2_practice8\ext55\bin\Debug\net6.0\ext55.pdb
+D:\Python\c_sharp_practice\2_practice8\ext55\obj\Debug\net6.0\ext55.dll
+D:\Python\c_sharp_practice\2_practice8\ext55\obj\Debug\net6.0\refint\ext55.dll
+D:\Python\c_sharp_practice\2_practice8\ext55\obj\Debug\net6.0\ext55.pdb
+D:\Python\c_sharp_practice\2_practice8\ext55\obj\Debug\net6.0\ext55.genruntimeconfig.cache
+D:\Python\c_sharp_practice\2_practice8\ext55\obj\Debug\net6.0\ref\ext55.dll
