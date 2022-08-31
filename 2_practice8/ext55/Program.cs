@@ -136,7 +136,7 @@ double determMatrix(int[,] arg_matrix)
                     Console.WriteLine(temp);
                     Console.WriteLine(Math.Pow(-1, 0+i));
                 */
-                temp=temp + arg_matrix[0,i]*Math.Pow(-1, 0+i) * determMatrix(RemoveElementMatrix(arg_matrix,0,i));
+                temp=temp + arg_matrix[0,i]*Math.Pow(-1, 0+i) * determMatrix(RemoveElementMatrix(arg_matrix,i,0));
                 Console.Write($" {temp} ");
             }
             
