@@ -1,4 +1,4 @@
-public class My_tetris
+public class My_Snake
 {
     public static void print_figure(char[,] input)
     {

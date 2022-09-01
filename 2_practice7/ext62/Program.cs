@@ -103,7 +103,7 @@ int[,] RemoveElementMatrix(int[,] matrix, int x, int y)
         else m=1;
         for (int j = 0; j < result.GetLength(1); j++)
         {
-            if (i<y) n=0; 
+            if (j<y) n=0; 
             else n=1;
             result[i,j]=matrix[i+m,j+n];
             //00R00 //0000

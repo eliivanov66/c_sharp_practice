@@ -1,5 +1,5 @@
 
-using static My_tetris;
+using static My_Snake;
 char _0='0';
 char _1=Convert.ToChar(9632);
 char[,] field      =new char[16,16];
@@ -27,7 +27,6 @@ int size_y=0;                         //размер фигуры по Y
 bool collision=false;                 //фигура попала на заполненное поле
 bool pause_game=false;                //пауза игры
 bool game_over=false;                 //игра окончена
-(bool,int) reset_level=(false,0);     //выстроена линия, обнуляем
 int score=0;                          //очки
 int speed=500;                        //скорость задержки между движениями, мсек
 ConsoleKeyInfo choise;                //переменная ввода клавиши
@@ -45,23 +44,6 @@ new Thread(() =>
     size_x=figure.GetLength(0);
     size_y=figure.GetLength(1);
     //проверка достигла ли фигура пола или есть ли колизии с другими объектами, если да, то новая фигура
-    collision=colision_field(fill_field, figure, coord_x , coord_y); //проверка на пересечение с фигурами уже стоящими на поле
-    if (((coord_x+size_x>field.GetLength(0))) || (collision))        //фигура установлена, нужна новая фигура
-    {
-        //формирование следующей фигуры
-        fill_field=field;
-        coord_x=0; 
-        coord_y=field.GetLength(1)/2;
-        figure=list_figures[Random.Shared.Next(0,list_figures.Count)]; //берём любую фигуру из листа
-        //удаление заполненных строк
-        reset_level=line_analyse(fill_field); //проверка собрана ли нижняя линия
-        while (reset_level.Item1)
-        {
-            fill_field=remove_line(fill_field, reset_level.Item2);
-            reset_level=line_analyse(fill_field); //проверка собрана ли нижняя линия
-            score++;
-        }
-    }
     //рисование поля и фигуры на нём
     field=place_figures(fill_field, figure, coord_x, coord_y); //рисование фигуры на поле
     print_figure(field);
