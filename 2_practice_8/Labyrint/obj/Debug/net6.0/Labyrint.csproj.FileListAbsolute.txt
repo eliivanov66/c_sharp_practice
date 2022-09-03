@@ -1,0 +1,15 @@
+D:\Python\c_sharp_practice\2_practice_8\Labyrint\obj\Debug\net6.0\Labyrint.csproj.AssemblyReference.cache
+D:\Python\c_sharp_practice\2_practice_8\Labyrint\obj\Debug\net6.0\Labyrint.GeneratedMSBuildEditorConfig.editorconfig
+D:\Python\c_sharp_practice\2_practice_8\Labyrint\obj\Debug\net6.0\Labyrint.AssemblyInfoInputs.cache
+D:\Python\c_sharp_practice\2_practice_8\Labyrint\obj\Debug\net6.0\Labyrint.AssemblyInfo.cs
+D:\Python\c_sharp_practice\2_practice_8\Labyrint\obj\Debug\net6.0\Labyrint.csproj.CoreCompileInputs.cache
+D:\Python\c_sharp_practice\2_practice_8\Labyrint\bin\Debug\net6.0\Labyrint.exe
+D:\Python\c_sharp_practice\2_practice_8\Labyrint\bin\Debug\net6.0\Labyrint.deps.json
+D:\Python\c_sharp_practice\2_practice_8\Labyrint\bin\Debug\net6.0\Labyrint.runtimeconfig.json
+D:\Python\c_sharp_practice\2_practice_8\Labyrint\bin\Debug\net6.0\Labyrint.dll
+D:\Python\c_sharp_practice\2_practice_8\Labyrint\bin\Debug\net6.0\Labyrint.pdb
+D:\Python\c_sharp_practice\2_practice_8\Labyrint\obj\Debug\net6.0\Labyrint.dll
+D:\Python\c_sharp_practice\2_practice_8\Labyrint\obj\Debug\net6.0\refint\Labyrint.dll
+D:\Python\c_sharp_practice\2_practice_8\Labyrint\obj\Debug\net6.0\Labyrint.pdb
+D:\Python\c_sharp_practice\2_practice_8\Labyrint\obj\Debug\net6.0\Labyrint.genruntimeconfig.cache
+D:\Python\c_sharp_practice\2_practice_8\Labyrint\obj\Debug\net6.0\ref\Labyrint.dll
