@@ -1,7 +1,7 @@
 ﻿/*
 Задача 68: Напишите программу вычисления функции Аккермана с помощью рекурсии. Даны два неотрицательных числа m и n.
 
-m = 2, n = 3 -> A(m,n) = 9
+m = 2, n = 3 -> A(m,n) = 29
 */
 
 //m=0: n+1
@@ -17,7 +17,6 @@ int Akkerman(int ArgM, int ArgN)
     if ((ArgM>0) && (ArgN>0)) Result=Akkerman(ArgM-1, Akkerman(ArgM,ArgN-1));
     return Result;
 }
-
 int m=-1;
 int n=-1;
 Console.Clear();
