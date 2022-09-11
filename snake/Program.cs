@@ -2,14 +2,14 @@
 using static My_Snake;
 char _1=Convert.ToChar(9632);
 char[,] field      =new char[16,32];
-char[,] fill_field =new char[16,32];
 char[,] snake = new char [1,1] {{Convert.ToChar(9632)}};
 char[,] target = new char [1,1] {{'+'}};
+int[,] snake_prev=new int[field.GetLength(0)*field.GetLength(1),2];
 //переменные
 int snake_coord_x=0;                    //координата головы змейки по X
 int snake_coord_y=field.GetLength(0)/2; //координата головы змейки по Y
 int moving_direction=2;                 //направление движения
-int snake_lenght=0;                     //длина змеи
+int snake_lenght=1;                     //длина змеи
 int target_coord_x=Random.Shared.Next(0, field.GetLength(1));//координата цели по X
 int target_coord_y=Random.Shared.Next(0, field.GetLength(0));//координата цели по Y
 bool collision=false;                   //фигура попала на заполненное поле
@@ -19,9 +19,7 @@ int score=0;                            //очки
 int speed=500;                          //скорость задержки между движениями, мсек
 ConsoleKeyInfo choise;                  //переменная ввода клавиши
 //инициализация поля и поля результатов, первой фигуры
-init_field(ref fill_field,' ');
 init_field(ref field,' ');
-print_figure(fill_field);
 //поток отрисовки фигуры на плоскости
 new Thread(() =>
 {
@@ -30,6 +28,25 @@ new Thread(() =>
     //снятие геометрии текущей фигуры
     //проверка достигла ли фигура пола или есть ли колизии с другими объектами, если да, то новая фигура
     //рисование поля и фигуры на нём
+    if (!pause_game)
+    {
+        snake_prev[0,0]=snake_coord_x;
+        snake_prev[0,1]=snake_coord_y;
+
+        //for (int i = snake_lenght-1; i > 0 ; i--)
+        //{
+        //    snake_prev[i,0]=snake_prev[i-1,0];
+        //    snake_prev[i,1]=snake_prev[i-1,1];
+        //}
+        if (snake_lenght>0)
+        {
+            for (int i = snake_lenght; i > 0 ; i--)
+            {
+                snake_prev[i,0]=snake_prev[i-1,0];
+                snake_prev[i,1]=snake_prev[i-1,1];
+            }
+        }
+    }
     switch (moving_direction)
     {
         case 0: 
@@ -49,9 +66,22 @@ new Thread(() =>
             if ((snake_coord_x) < 0) snake_coord_x=field.GetLength(1)-1; //движение влево
             break;
     }
-    field=place_figures(fill_field, snake, snake_coord_x, snake_coord_y); //рисование фигуры на поле
+    init_field(ref field, ' ');
+    for (int i = 1; i < snake_lenght; i++)
+    {
+        field=place_figures(field, snake, snake_prev[i,0], snake_prev[i,1]); //рисование фигуры на поле
+    }
+    field=place_figures(field, snake, snake_coord_x, snake_coord_y); //рисование фигуры на поле
     field=place_figures(field, target, target_coord_x, target_coord_y); //рисование фигуры на поле
     print_figure(field);
+
+    //змея налетела на саму себя
+    for (int i = 1; i < snake_lenght; i++)
+    {
+        if ((snake_coord_x==snake_prev[i,0]) && (snake_coord_y==snake_prev[i,1])) game_over=true;
+    }
+    //пустые клетки для движения закончились
+    if (score>=snake_prev.GetLength(0)) game_over=true; 
 
     //провера переполнения игрового поля
     collision=(target_coord_x==snake_coord_x) && (target_coord_y==snake_coord_y);
@@ -66,9 +96,8 @@ new Thread(() =>
         Console.WriteLine($"Управление: ВВЕРХ/ВНИЗ/ВЛЕВО/ВПРАВО - движение, ПРОБЕЛ - пауза");
     else
         Console.WriteLine($"ПАУЗА АКТИВНА, ПРОБЕЛ - отменить паузу");
-    score=snake_lenght;
+    score=snake_lenght-1;
     Console.WriteLine($"У вас {score} очков, скорость движения {speed} (A/S - изменение скорости)");
-    Console.WriteLine($"x {snake_coord_x}, y {snake_coord_y}");
     Thread.Sleep(speed);
     //if (!pause_game) coord_x++;
 
