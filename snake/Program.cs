@@ -131,25 +131,25 @@ new Thread(() =>
             pause_game=!pause_game;
         }
         //движение вверх   
-        if ((choise.Key==ConsoleKey.UpArrow) && (!pause_game))
+        if ((choise.Key==ConsoleKey.UpArrow) && (!pause_game) && (moving_direction!=1))
         {
             //coord_y--;
             moving_direction=0;
         }
         //движение вниз   
-        if ((choise.Key==ConsoleKey.DownArrow) && (!pause_game))
+        if ((choise.Key==ConsoleKey.DownArrow) && (!pause_game) && (moving_direction!=0))
         {
             //coord_y++;
             moving_direction=1;
         }
         //движение вправо
-        if ((choise.Key==ConsoleKey.RightArrow) && (!pause_game))
+        if ((choise.Key==ConsoleKey.RightArrow) && (!pause_game) && (moving_direction!=3))
         {   
             //coord_x++;
             moving_direction=2;
         }
         //движение влево
-        if ((choise.Key==ConsoleKey.LeftArrow) && (!pause_game))
+        if ((choise.Key==ConsoleKey.LeftArrow) && (!pause_game) && (moving_direction!=2))
         {
             //coord_x--;
             moving_direction=3;
