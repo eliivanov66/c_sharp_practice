@@ -90,7 +90,6 @@ new Thread(() =>
         snake_lenght++;
         target_coord_x=Random.Shared.Next(0, field.GetLength(1));
         target_coord_y=Random.Shared.Next(0, field.GetLength(0));
-        char[,] snake = new char [1,1] {{Convert.ToChar(9632)}};
     }
     if (!pause_game) 
         Console.WriteLine($"Управление: ВВЕРХ/ВНИЗ/ВЛЕВО/ВПРАВО - движение, ПРОБЕЛ - пауза");

@@ -52,25 +52,4 @@ public class My_Snake
             }
         }
     }
-    public static bool colision_field(char[,] arg_field, char[,] arg_figure, int arg_x, int arg_y)
-    {
-        bool result=false;
-        //фигура меньше поля, всегда
-        if ( (arg_field.GetLength(0)>=arg_figure.GetLength(0)+arg_y) &&
-             (arg_field.GetLength(1)>=arg_figure.GetLength(1)+arg_x))
-        {
-            for (int i = 0; i < arg_figure.GetLength(0); i++)
-            {
-                for (int j = 0; j < arg_figure.GetLength(1); j++)
-                {
-                    if ((arg_field[i + arg_y, j + arg_x]!=' ') && (arg_field[i + arg_y , j + arg_x]==arg_figure[i,j]))  
-                    {    
-                        result=true; break;
-                    }
-                }
-                if (result) break;
-            }
-        }
-        return result;
-    }
 }
